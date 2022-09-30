@@ -1,0 +1,22 @@
+actions:
+  - name: user
+    definition:
+      kind: ""
+      handler: http://host.docker.internal:3000/user
+      timeout: 60
+custom_types:
+  enums: []
+  input_objects: []
+  objects:
+    - name: AuthorId
+      relationships:
+        - field_mapping:
+            id: id
+          name: author
+          remote_table:
+            name: authors
+            schema: public
+          source: default
+          type: object
+    - name: User
+  scalars: []

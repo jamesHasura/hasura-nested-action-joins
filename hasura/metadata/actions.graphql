@@ -1,0 +1,13 @@
+type Query {
+  user: User
+}
+
+type AuthorId {
+  id: Int!
+}
+
+type User {
+  name: String!
+  favorite_author: AuthorId
+}
+

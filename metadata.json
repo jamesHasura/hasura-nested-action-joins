@@ -1,0 +1,79 @@
+{
+	"metadata": {
+		"version": 3,
+		"sources": [
+			{
+				"name": "default",
+				"kind": "postgres",
+				"tables": [
+					{
+						"table": {
+							"name": "authors",
+							"schema": "public"
+						}
+					}
+				],
+				"configuration": {
+					"connection_info": {
+						"database_url": {
+							"from_env": "PG_DATABASE_URL"
+						},
+						"isolation_level": "read-committed",
+						"use_prepared_statements": false
+					}
+				}
+			}
+		],
+		"actions": [
+			{
+				"name": "user",
+				"definition": {
+					"handler": "http://host.docker.internal:3000/user",
+					"output_type": "User",
+					"type": "query",
+					"timeout": 60
+				}
+			}
+		],
+		"custom_types": {
+			"objects": [
+				{
+					"name": "AuthorId",
+					"fields": [
+						{
+							"name": "id",
+							"type": "Int!"
+						}
+					],
+					"relationships": [
+						{
+							"field_mapping": {
+								"id": "id"
+							},
+							"name": "author",
+							"remote_table": {
+								"name": "authors",
+								"schema": "public"
+							},
+							"source": "default",
+							"type": "object"
+						}
+					]
+				},
+				{
+					"name": "User",
+					"fields": [
+						{
+							"name": "name",
+							"type": "String!"
+						},
+						{
+							"name": "favorite_author",
+							"type": "AuthorId"
+						}
+					]
+				}
+			]
+		}
+	}
+}

@@ -1,0 +1,58 @@
+{
+	"type": "bulk",
+	"args": [
+		{
+			"type": "set_custom_types",
+			"args": {
+				"objects": [
+					{
+						"name": "AuthorId",
+						"fields": [
+							{
+								"name": "id",
+								"type": "Int!"
+							}
+						],
+						"relationships": [
+							{
+								"name": "author",
+								"type": "object",
+								"remote_table": "authors",
+								"field_mapping": {
+									"id": "id"
+								}
+							}
+						]
+					},
+					{
+						"name": "User",
+						"fields": [
+							{
+								"name": "name",
+								"type": "String!"
+							},
+							{
+								"name": "favorite_author",
+								"type": "AuthorId"
+							}
+						]
+					}
+				]
+			}
+		},
+		{
+			"type": "create_action",
+			"args": {
+				"name": "user",
+				"definition": {
+					"type": "query",
+					"kind": "synchronous",
+					"arguments": [],
+					"output_type": "User",
+					"handler": "http://host.docker.internal:3000/user",
+					"timeout": 60
+				}
+			}
+		}
+	]
+}
