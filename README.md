@@ -14,6 +14,6 @@ Ensure you have the Hasura CLI downloaded:
 
 ### <u>Node</u>
 
-- `cd /handlers`
-- `npm install`
-- `npm start`
+1. `cd /handlers`
+2. `npm install`
+3. `npm start`
