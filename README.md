@@ -1,4 +1,8 @@
-# hasura-nested-action-joins
+# Hasura Nested Action Joins
+
+## Overview
+
+This project showcases how nested action joins can be acheived within Hasura. The project defines an action that returns a nested field. Users can augment the json metadata of their projects to add action response to DB relationships on nested fields. Please look through the metadata.json and the apiCall.json files to view examples of how this is done.
 
 ## Project Setup
 
