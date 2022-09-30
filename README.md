@@ -11,8 +11,6 @@ Ensure you have the Hasura CLI downloaded:
 2. `cd /hasura`
 3. `hasura metadata apply`
 4. `hasura migrate apply`
-5. `hasura metadata clear`
-6. `hasura metadata apply`
 
 ### <u>Node</u>
 
